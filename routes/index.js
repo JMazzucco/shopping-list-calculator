@@ -4,7 +4,7 @@ const router = express.Router();
 const products = require('../products');
 
 router.get('/', function(req, res, next) {
-  res.sendfile('./views/index.html');
+  res.sendfile('./public/index.html');
 });
 
 router.get('/computers', function(req, res, next) {
