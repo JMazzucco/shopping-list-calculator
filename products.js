@@ -2,7 +2,7 @@ const https = require('https');
 
 https.get('https://shopicruit.myshopify.com/products.json?limit=250', (res) => {
 
-let productsData = "";
+	let productsData = "";
 
   res.on('data', (d) => {
     productsData += d;
@@ -10,15 +10,6 @@ let productsData = "";
 
   res.on('end', (d) => {
     let productsJson = JSON.parse(productsData).products;
-
-    // Put calculations here then refactor them out
-
-    // Requirements:
-    // An equal number of computers and keyboards.
-    // As many different computer and keyboard variants the store has to offer, while buying no duplicate variants.
-    // Spend the least amount of money possible.
-    // Alice needs to know the total weight of all computers and keyboards so she can plan for enough volunteers to help carry it all.
-
     let computers = [];
     let keyboards = [];
 
@@ -42,7 +33,7 @@ let productsData = "";
 
     });
 
-    // sort by price
+    // sort arrays by price
     computers.sort(function(a, b) {
       return parseFloat(a.price) - parseFloat(b.price);
     });
@@ -51,14 +42,13 @@ let productsData = "";
       return parseFloat(a.price) - parseFloat(b.price);
     });
 
-    let difference = -Math.abs(keyboards.length - computers.length);
+    let difference = -Math.abs(keyboards.length - computers.length); // Get the difference of the lengths of the arrays
 
-    // reduce the value of difference from the highest array
+    // Reduce the value of difference from the highest array
     keyboards.length > computers.length ? keyboards.slice(difference) : computers.splice(difference);
 
     exports.computers = computers;
 		exports.keyboards = keyboards;
-
 
   });
 
