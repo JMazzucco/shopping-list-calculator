@@ -34,12 +34,27 @@ let productsData = "";
     let computers = [];
     let keyboards = [];
 
-    // Remove everything but keyboards and computers from products object
-    for (var i in productsJson) {
-      let product = productsJson[i];
-      if (product.product_type === 'Keyboard') { keyboards.push(product) };
-      if (product.product_type === 'Computer') { computers.push(product) };
-    };
+    productsJson.forEach(function (product) {
+
+      if (product.product_type === 'Keyboard') {
+
+        product.variants.forEach(function (variant) {
+          variant.product_title = product.title;
+          keyboards.push(variant);
+        });
+
+      } else if (product.product_type === 'Computer') {
+
+        product.variants.forEach(function (variant) {
+          variant.product_title = product.title; //refactor all of this into a separate function and pass an array name
+          computers.push(variant);
+        });
+
+      };
+
+    });
+
+    console.log(computers);
 
   });
 
