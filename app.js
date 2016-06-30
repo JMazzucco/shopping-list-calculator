@@ -46,7 +46,7 @@ let productsData = "";
       } else if (product.product_type === 'Computer') {
 
         product.variants.forEach(function (variant) {
-          variant.product_title = product.title; //refactor all of this into a separate function and pass an array name
+          variant.product_title = product.title;
           computers.push(variant);
         });
 
@@ -54,7 +54,16 @@ let productsData = "";
 
     });
 
-    console.log(computers);
+    // sort by price
+    computers.sort(function(a, b) {
+      return parseFloat(a.price) - parseFloat(b.price);
+    });
+
+    keyboards.sort(function(a, b) {
+      return parseFloat(a.price) - parseFloat(b.price);
+    });
+
+  console.log(keyboards);
 
   });
 
