@@ -54,30 +54,10 @@ let productsData = "";
     let difference = -Math.abs(keyboards.length - computers.length);
 
     // reduce the value of difference from the highest array
-
     keyboards.length > computers.length ? keyboards.slice(difference) : computers.splice(difference);
 
     exports.computers = computers;
 		exports.keyboards = keyboards;
-
-    //***MOVE TO CLIENT SIDE***
-
-    // // get total price and weight
-    //   let totalPrice = 0;
-    //   let totalGrams = 0;
-
-    //   keyboards.forEach(function (keyboard) {
-    //     totalPrice += parseFloat(keyboard.price)
-    //     totalGrams += parseFloat(keyboard.grams);
-    //   });
-
-    //   computers.forEach(function (computer) {
-    //     totalPrice += parseFloat(computer.price)
-    //     totalGrams += parseFloat(computer.grams);
-    //   });
-
-    //   totalPrice = totalPrice.toFixed(2);
-    //   totalKilograms = (totalGrams / 1000).toFixed();
 
 
   });
