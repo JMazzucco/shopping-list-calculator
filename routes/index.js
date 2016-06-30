@@ -1,16 +1,18 @@
-var express = require('express');
-var router = express.Router();
-var app = express();
+const express = require('express');
+const app = express();
+const router = express.Router();
+const products = require('../products');
 
-
-
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.sendfile('./views/index.html');
 });
 
-router.get('/list', function(req, res, next) {
-  res.json(totalKilograms);
+router.get('/computers', function(req, res, next) {
+  res.json(products.computers);
+});
+
+router.get('/keyboards', function(req, res, next) {
+  res.json(products.keyboards);
 });
 
 module.exports = router;
