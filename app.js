@@ -68,13 +68,25 @@ let productsData = "";
     keyboards.length > computers.length ? keyboards.slice(difference) : computers.splice(difference);
 
 
+    // get total price and weight
+      let totalPrice = 0;
+      let totalGrams= 0;
+
+      keyboards.forEach(function (keyboard) {
+        totalPrice += parseFloat(keyboard.price)
+        totalGrams += parseFloat(keyboard.grams);
+      });
+
+      computers.forEach(function (computer) {
+        totalPrice += parseFloat(computer.price)
+        totalGrams += parseFloat(computer.grams);
+      });
+
+      totalPrice = totalPrice.toFixed(2);
+      totalKilograms = (totalGrams / 1000).toFixed();
 
 
-
-    keyboards.forEach(function(keyboard) {
-      console.log(keyboard.price);
-
-    })
+      console.log(totalKilograms);
   });
 
 
