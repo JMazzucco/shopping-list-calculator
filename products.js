@@ -15,20 +15,17 @@ https.get('https://shopicruit.myshopify.com/products.json?limit=250', (res) => {
 
     productsJson.forEach(function (product) {
 
+    	let addVariantToArray = function(array) {
+    		  product.variants.forEach(function (variant) {
+          variant.product_title = product.title;
+          array.push(variant);
+        });
+    	}
+
       if (product.product_type === 'Keyboard') {
-
-        product.variants.forEach(function (variant) {
-          variant.product_title = product.title;
-          keyboards.push(variant);
-        });
-
+      	addVariantToArray(keyboards);
       } else if (product.product_type === 'Computer') {
-
-        product.variants.forEach(function (variant) {
-          variant.product_title = product.title;
-          computers.push(variant);
-        });
-
+				addVariantToArray(computers);
       };
 
     });
