@@ -20,8 +20,6 @@ let productsData = "";
 
   res.on('end', (d) => {
     let productsJson = JSON.parse(productsData).products;
-    // console.log(productsJson);
-
 
     // Put calculations here then refactor them out
 
@@ -34,7 +32,7 @@ let productsData = "";
     let computers = [];
     let keyboards = [];
 
-    productsJson.forEach(function (product) {
+    productsJson.forEach(function (product) { //change to the filter funcntion
 
       if (product.product_type === 'Keyboard') {
 
@@ -63,9 +61,22 @@ let productsData = "";
       return parseFloat(a.price) - parseFloat(b.price);
     });
 
-  console.log(keyboards);
+    let difference = -Math.abs(keyboards.length - computers.length);
 
+    // reduce the value of difference from the highest array
+
+    keyboards.length > computers.length ? keyboards.slice(difference) : computers.splice(difference);
+
+
+
+
+
+    keyboards.forEach(function(keyboard) {
+      console.log(keyboard.price);
+
+    })
   });
+
 
 }).on('error', (e) => {
   console.error(e);
