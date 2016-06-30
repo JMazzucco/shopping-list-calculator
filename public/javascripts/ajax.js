@@ -1,9 +1,14 @@
+var totalPrice = 0;
+var totalGrams = 0;
+
+
 $.getJSON( "/computers", function( data ) {
 
   var items = [];
   $.each( data, function( i, obj ) {
-  	console.log(obj.title);
 
+  totalPrice += parseFloat(obj.price);
+  totalGrams += parseFloat(obj.grams);
 
     items.push("<tr>" +
                 "<td>"+ obj.product_title + "</td>" +
@@ -16,6 +21,9 @@ $.getJSON( "/computers", function( data ) {
   });
 
 $( "tbody" ).append( items );
+
+
+
 
 });
 
@@ -23,8 +31,9 @@ $.getJSON( "/keyboards", function( data ) {
 
   var items = [];
   $.each( data, function( i, obj ) {
-  	console.log(obj.title);
 
+  totalPrice += parseFloat(obj.price);
+  totalGrams += parseFloat(obj.grams);
 
     items.push("<tr>" +
                 "<td>"+ obj.product_title + "</td>" +
@@ -36,17 +45,25 @@ $.getJSON( "/keyboards", function( data ) {
 
   });
 
-$( "tbody" ).append( items );
+	$( "tbody" ).append( items );
 
+
+	$( "tbody" ).append(
+
+
+							"<tr class='info'>" +
+                "<td>TOTAL:</td>" +
+                "<td></td>" +
+                "<td>"+ Math.round((totalGrams / 1000)) + " kg" +  "</td>" +
+                "<td>"+ "$" + (totalPrice.toFixed(2)) + "</td>" +
+              "</tr>"
+
+
+
+              );
 });
 
 
-
-    //***MOVE TO CLIENT SIDE***
-
-    // // get total price and weight
-    //   let totalPrice = 0;
-    //   let totalGrams = 0;
 
     //   keyboards.forEach(function (keyboard) {
     //     totalPrice += parseFloat(keyboard.price)
