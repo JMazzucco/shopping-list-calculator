@@ -8,6 +8,6 @@
 
 ##Usage
 * Fork project
-* run 'npm Install'
+* run 'npm install'
 * run 'npm start'
 * open 'http://localhost:3000/'
