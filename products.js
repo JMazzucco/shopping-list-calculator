@@ -30,19 +30,18 @@ https.get('https://shopicruit.myshopify.com/products.json?limit=250', (res) => {
 
     });
 
-    // sort arrays by price
-    computers.sort(function(a, b) {
-      return parseFloat(a.price) - parseFloat(b.price);
-    });
+    let sortArrayByPrice = function(array) {
+	    array.sort(function(a, b) {
+	      return parseFloat(a.price) - parseFloat(b.price);
+	    });
+    };
 
-    keyboards.sort(function(a, b) {
-      return parseFloat(a.price) - parseFloat(b.price);
-    });
+    sortArrayByPrice(computers);
+    sortArrayByPrice(keyboards);
 
     let difference = -Math.abs(keyboards.length - computers.length); // Get the difference of the lengths of the arrays
 
-    // Reduce the value of difference from the highest array
-    keyboards.length > computers.length ? keyboards.slice(difference) : computers.splice(difference);
+    keyboards.length > computers.length ? keyboards.slice(difference) : computers.splice(difference); //  Make the arrays have the same number of objects
 
     exports.computers = computers;
 		exports.keyboards = keyboards;
@@ -53,4 +52,3 @@ https.get('https://shopicruit.myshopify.com/products.json?limit=250', (res) => {
 }).on('error', (e) => {
   console.error(e);
 });
-
