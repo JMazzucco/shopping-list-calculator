@@ -1,7 +1,6 @@
 # Alice's Hackathon Shopping List
 
 ##Usage
-* Fork project
 * run 'npm install'
 * run 'npm start'
 * open 'http://localhost:3000/'
